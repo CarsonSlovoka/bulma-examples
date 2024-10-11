@@ -106,6 +106,7 @@
               </p>
             </div>
           </div>
+          <a class="navbar-item"><span class="icon"><i id="dark-theme" class="fas fa-moon"></i></span></a>
         </div>
 
         <div class="navbar-end">
@@ -475,8 +476,21 @@
           mainContent.style.width = `${curWidth - tocWidth}%`  // Revert back when sidebar is visible
         }
       })
-    })
 
+      const htmlElem = document.querySelector("html")
+      document.querySelector("#dark-theme").onclick = e => {
+        e.preventDefault()
+        const iconElem = e.target
+        htmlElem.classList.toggle("theme-dark")
+        if (htmlElem.classList.contains('theme-dark')) {
+          iconElem.classList.remove("fa-moon")
+          iconElem.classList.add("fa-sun")
+        } else {
+          iconElem.classList.remove("fa-sun")
+          iconElem.classList.add("fa-moon")
+        }
+      }
+    })
 
     // toggle left
     document.getElementById('toggle-left-aside_display').addEventListener('click', e => {
