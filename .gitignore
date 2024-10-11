@@ -1,3 +1,6 @@
 *.exe
 *.pdf
 *.png
+
+# my-bulma.css: from `static/sass/compile_sass.bat`
+src/my-bulma.css

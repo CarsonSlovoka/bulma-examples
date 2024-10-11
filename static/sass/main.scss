@@ -1,0 +1,11 @@
+// https://bulma.io/documentation/customize/with-sass/
+
+$purple: #ff7733;
+$pink: #1ec2ff;
+
+@use "bulma/sass" with (
+  $primary: $purple,
+  $link: $pink,
+  $control-border-width: 2px,
+  $input-shadow: none
+);
