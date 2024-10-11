@@ -107,7 +107,12 @@
               </p>
             </div>
           </div>
-          <a class="navbar-item"><span class="icon"><i id="dark-theme" class="fas fa-moon"></i></span></a>
+
+          <div class="navbar-item">
+            <a class="button" id="dark-theme">
+              <span class="icon"><i class="fas fa-moon fa-lg"></i></span>
+            </a>
+          </div>
         </div>
 
         <div class="navbar-end">
@@ -479,9 +484,8 @@
       })
 
       const htmlElem = document.querySelector("html")
-      document.querySelector("#dark-theme").onclick = e => {
-        e.preventDefault()
-        const iconElem = e.target
+      const iconElem = document.querySelector("#dark-theme i")
+      document.querySelector("#dark-theme").onclick = () => {
         htmlElem.classList.toggle("theme-dark")
         if (htmlElem.classList.contains('theme-dark')) {
           iconElem.classList.remove("fa-moon")
