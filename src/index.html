@@ -158,7 +158,7 @@
     <main class="main-content">
       <!-- HEADINGS -->
       <h1 class="title is-1">HEADINGS</h1>
-      <div class="block" > <!-- 'block': gives it some margin on the bottom so we can kind of separate -->
+      <div data-toc="HEADINGS" class="block" > <!-- 'block': gives it some margin on the bottom so we can kind of separate -->
         <h1 class="title">title</h1>
         <h1 class="subtitle">subtitle</h1>
 
@@ -173,7 +173,7 @@
 
       <!-- CONTENT -->
       <h1 class="title is-1">CONTENT</h1>
-      <div class="block">
+      <div data-toc="CONTENT" class="block">
         <p class="content is-small">content is-small</p>
         <p class="content is-medium">content is-medium</p>
         <p class="content is-large">content is-large</p>
@@ -181,7 +181,7 @@
 
       <!-- BUTTONS -->
       <h1 class="title is-1">BUTTONS</h1>
-      <div class="block">
+      <div data-toc="BUTTONS" class="block">
         <button class="button">button</button>
 
         <button class="button is-white">button is-white</button>
@@ -191,7 +191,7 @@
         <button class="button is-link">button is-link</button>
       </div>
 
-      <div data-toc="primary..danger" data-depth="2" class="block">
+      <div data-toc="primary..danger" data-toc-depth="2" class="block">
         <button href="https://google.com/" class="button is-primary">button is-primary</button>
         <button href="" class="button is-info">button is-info</button>
         <button href="" class="button is-success">button is-success</button>
@@ -199,13 +199,13 @@
         <button href="" class="button is-danger">button is-danger</button>
       </div>
 
-      <div data-depth="2" class="block">
+      <div data-toc="size" data-toc-depth="2" class="block">
         <button href="" class="button is-primary is-small">button is-primary is-small</button>
         <button href="" class="button is-info is-medium">button is-info is-medium</button>
         <button href="" class="button is-success is-large">button is-success is-large</button>
       </div>
 
-      <div data-depth="2" class="block">
+      <div data-toc="outlined" data-toc-depth="2" class="block">
         <button href="" class="button is-primary is-outlined">button is-primary is-outlined</button>
         <button href="" class="button is-info is-outlined">button is-info is-outlined</button>
         <button href="" class="button is-success is-outlined">button is-success is-outlined</button>
@@ -213,7 +213,7 @@
         <button href="" class="button is-danger is-outlined">button is-danger is-outlined</button>
       </div>
 
-      <div data-depth="2" class="block">
+      <div data-toc="inverted" data-toc-depth="2" class="block">
         <button href="" class="button is-primary is-inverted">button is-primary is-inverted</button>
         <button href="" class="button is-info is-inverted">button is-info is-inverted</button>
         <button href="" class="button is-success is-inverted">button is-success is-inverted</button>
@@ -221,7 +221,7 @@
         <button href="" class="button is-danger is-inverted">button is-danger is-inverted</button>
       </div>
 
-      <div data-toc="hovered..loading" data-depth="2" class="block">
+      <div data-toc="hovered..loading" data-toc="hovered..loading" data-toc-depth="2" class="block">
         <a href="" class="button is-hovered">button is-hovered</a>
         <a href="" class="button is-focused">button is-focused</a>
         <a href="" class="button is-active">button is-active</a>
@@ -231,7 +231,7 @@
 
       <!-- BOX -->
       <h1 class="title is-1">BOX</h1>
-      <div class="block">
+      <div data-toc="BOX" class="block">
         <div class="box">
           <h1 class="title">box title</h1>
           <p>box p</p>
@@ -240,7 +240,7 @@
 
       <!-- NOTIFICATIONS -->
       <h1 class="title is-1">NOTIFICATIONS</h1>
-      <div class="block">
+      <div data-toc="NOTIFICATIONS" class="block">
         <div class="notification">
           <button class="delete"></button>
           <a href="https://zh.wikipedia.org/zh-tw/Lorem_ipsum">Lorem ipsum</a> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -269,7 +269,7 @@
 
       <!-- TAGS  -->
       <h1 class="title is-1">TAGS</h1>
-      <div class="block">
+      <div data-toc="TAGS" class="block">
         <span class="tag">tag</span>
         <span class="tag is-black">tag is-black</span>
         <span class="tag is-dark">tag is-dark</span>
@@ -290,7 +290,7 @@
 
       <!-- MESSAGES  -->
       <h1 class="title is-1">MESSAGES</h1>
-      <div class="block">
+      <div data-toc="MESSAGES" class="block">
         <article class="message">
           <div class="message-header">
             <p>message-header</p>
@@ -343,7 +343,7 @@
       </div>
 
       <!-- SIDE MENU -->
-      <h1 class="title is-1"></h1>
+      <h1 class="title is-1">SIDE MENU</h1>
       <div data-toc="SIDE MENU" class="block">
         <aside class="menu">
           <p class="menu-label">menu-label 1</p>
@@ -380,15 +380,50 @@
 
     <aside id="right-aside" class="right-aside">
       <h3 class="title is-4">Table of Contents</h3>
-      <ul id="outline">
-        <li><a>Overview</a></li>
-        <li><a>Syntax</a></li>
+      <ul>
       </ul>
     </aside>
   </section>
 </body>
 
 <script>
+  function initTOC() {
+    const rightSide = document.getElementById('right-aside')
+    const ulElem = rightSide.querySelector("ul")
+
+    const tocItems = document.querySelectorAll('[data-toc]')
+    tocItems.forEach(item => {
+      // add the 'title' for each element
+      [...item.children].forEach(e=>{
+        e.title = [...e.classList].join(" ")
+      })
+
+      const depth = parseInt(item.getAttribute('data-toc-depth') || 0, 10)
+      const listItem = document.createElement('li')
+      if (depth > 0) {
+        listItem.style.marginLeft = `${depth}rem`
+      }
+      const link = document.createElement('a')
+      link.textContent = item.getAttribute('data-toc')
+      link.addEventListener('click', e => {
+        e.preventDefault()
+        item.scrollIntoView({ behavior: 'smooth' })
+
+        // highlight item
+        item.style.transition = 'background-color 0.5s ease'
+        item.style.outline = '2px solid red'
+        const orgBGColor = item.style.backgroundColor
+        item.style.backgroundColor = '#ffeb3b'
+        setTimeout(() => {
+          item.style.backgroundColor = orgBGColor
+          item.style.outline = ''
+        }, 2000);
+      })
+      listItem.appendChild(link)
+      ulElem.appendChild(listItem)
+    })
+  }
+
   function initNavbar() {
     const navbarBurgers = document.querySelectorAll('.navbar-burger')
     navbarBurgers.forEach( el => {
@@ -459,6 +494,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
+    initTOC()
     initNavbar()
   })
 </script>
