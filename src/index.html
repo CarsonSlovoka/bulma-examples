@@ -393,14 +393,16 @@
     })
 
     const navElem = document.querySelector("nav")
-    ;["top", "bottom"].forEach(directionName=>{
-      document.querySelector(`#btn-nav-fixed-${directionName}`).onclick = e =>{
-        navElem.classList.remove(`is-fixed-bottom`)
-        navElem.classList.remove(`is-fixed-top`)
-        navElem.classList.toggle(`is-fixed-${directionName}`)
-        document.querySelector("html").classList.toggle(`has-navbar-fixed-${directionName}`)
-      }
-    })
+    document.querySelector(`#btn-nav-fixed-top`).onclick = e =>{
+      navElem.classList.remove(`is-fixed-bottom`)
+      navElem.classList.toggle(`is-fixed-top`)
+      document.querySelector("html").classList.toggle(`has-navbar-fixed-top`)
+    }
+    document.querySelector(`#btn-nav-fixed-bottom`).onclick = e =>{
+      navElem.classList.remove(`is-fixed-top`)
+      navElem.classList.toggle(`is-fixed-bottom`)
+      document.querySelector("html").classList.toggle(`has-navbar-fixed-bottom`)
+    }
   }
 
   document.addEventListener('DOMContentLoaded', () => {
