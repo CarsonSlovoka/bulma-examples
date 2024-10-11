@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bulma tutorial</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- HEADINGS -->
+    <h1 class="title is-1">HEADINGS</h1>
+    <div class="block" > <!-- 'block': gives it some margin on the bottom so we can kind of separate -->
+      <h1 class="title">title</h1>
+      <h1 class="subtitle">subtitle</h1>
+
+      <!-- Sizes -->
+      <h1 class="title is-1">title is-1</h1>
+      <h2 class="title is-2">title is-2</h2>
+      <h3 class="title is-3">title is-3</h3>
+      <h4 class="title is-4">title is-4</h4>
+      <h5 class="title is-5">title is-5</h5>
+      <h6 class="title is-6">title is-6</h6>
+    </div>
+
+    <!-- CONTENT -->
+    <h1 class="title is-1">CONTENT</h1>
+    <div class="block">
+      <p class="content is-small">content is-small</p>
+      <p class="content is-medium">content is-medium</p>
+      <p class="content is-large">content is-large</p>
+    </div>
+
+    <!-- BUTTONS -->
+    <h1 class="title is-1">BUTTONS</h1>
+    <div class="block">
+      <button class="button">button</button>
+
+      <button class="button is-white">button is-white</button>
+      <button class="button is-light">button is-light</button>
+      <button class="button is-dart">button is-dart</button>
+      <button class="button is-black">button is-black</button>
+      <button class="button is-link">button is-link</button>
+    </div>
+
+    <div data-toc="primary..danger" data-depth="2" class="block">
+      <button href="https://google.com/" class="button is-primary">button is-primary</button>
+      <button href="" class="button is-info">button is-info</button>
+      <button href="" class="button is-success">button is-success</button>
+      <button href="" class="button is-warning">button is-warning</button>
+      <button href="" class="button is-danger">button is-danger</button>
+    </div>
+
+    <div data-depth="2" class="block">
+      <button href="" class="button is-primary is-small">button is-primary is-small</button>
+      <button href="" class="button is-info is-medium">button is-info is-medium</button>
+      <button href="" class="button is-success is-large">button is-success is-large</button>
+    </div>
+
+    <div data-depth="2" class="block">
+      <button href="" class="button is-primary is-outlined">button is-primary is-outlined</button>
+      <button href="" class="button is-info is-outlined">button is-info is-outlined</button>
+      <button href="" class="button is-success is-outlined">button is-success is-outlined</button>
+      <button href="" class="button is-warning is-outlined">button is-warning is-outlined</button>
+      <button href="" class="button is-danger is-outlined">button is-danger is-outlined</button>
+    </div>
+
+    <div data-depth="2" class="block">
+      <button href="" class="button is-primary is-inverted">button is-primary is-inverted</button>
+      <button href="" class="button is-info is-inverted">button is-info is-inverted</button>
+      <button href="" class="button is-success is-inverted">button is-success is-inverted</button>
+      <button href="" class="button is-warning is-inverted">button is-warning is-inverted</button>
+      <button href="" class="button is-danger is-inverted">button is-danger is-inverted</button>
+    </div>
+
+    <div data-toc="hovered..loading" data-depth="2" class="block">
+      <a href="" class="button is-hovered">button is-hovered</a>
+      <a href="" class="button is-focused">button is-focused</a>
+      <a href="" class="button is-active">button is-active</a>
+      <a href="" class="button is-loading">button is-loading</a>
+      <a href="" class="button" disabled>button disabled</a>
+    </div>
+
+    <!-- BOX -->
+    <h1 class="title is-1">BOX</h1>
+    <div class="block">
+      <div class="box">
+        <h1 class="title">box title</h1>
+        <p>box p</p>
+      </div>
+    </div>
+
+    <!-- NOTIFICATIONS -->
+    <h1 class="title is-1">NOTIFICATIONS</h1>
+    <div class="block">
+      <div class="notification">
+        <button class="delete"></button>
+        <a href="https://zh.wikipedia.org/zh-tw/Lorem_ipsum">Lorem ipsum</a> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </div>
+      <div class="notification is-primary">
+        <button class="delete"></button>
+        notification is-primary
+      </div>
+      <div class="notification info">
+        <button class="delete"></button>
+        notification is-primary
+      </div>
+      <div class="notification is-success">
+        <button class="delete"></button>
+        notification is-primary
+      </div>
+      <div class="notification is-warning">
+        <button class="delete"></button>
+        notification is-primary
+      </div>
+      <div class="notification is-danger">
+        <button class="delete"></button>
+        notification is-danger
+      </div>
+    </div>
+
+    <!-- TAGS  -->
+    <h1 class="title is-1">TAGS</h1>
+    <div class="block">
+      <span class="tag">tag</span>
+      <span class="tag is-black">tag is-black</span>
+      <span class="tag is-dark">tag is-dark</span>
+      <span class="tag is-light">tag is-light</span>
+      <span class="tag is-white">tag is-white</span>
+      <span class="tag is-primary">tag is-primary</span>
+      <span class="tag is-info">tag is-info</span>
+      <span class="tag is-success">tag is-success</span>
+      <span class="tag is-warning">tag is-warning</span>
+      <span class="tag is-danger">tag is-danger</span>
+      <span class="tag is-danger is-small">tag is-danger is-small</span>
+      <span class="tag is-danger is-medium">tag is-danger is-medium</span>
+      <span class="tag is-danger is-large">tag is-danger is-large</span>
+      <span class="tag is-danger is-large">
+        tag is-danger is-large<button class="delete"></button>
+      </span>
+    </div>
+
+    <!-- MESSAGES  -->
+    <h1 class="title is-1">MESSAGES</h1>
+    <div class="block">
+      <article class="message">
+        <div class="message-header">
+          <p>message-header</p>
+        </div>
+        <div class="message-body">
+          message-body
+        </div>
+      </article>
+
+      <article class="message is-primary">
+        <div class="message-header">
+          <p>message-header</p>
+        </div>
+        <div class="message-body">
+          message-body
+        </div>
+      </article>
+      <article class="message is-success">
+        <div class="message-header">
+          <p>message-header</p>
+        </div>
+        <div class="message-body">
+          message-body
+        </div>
+      </article>
+      <article class="message is-info">
+        <div class="message-header">
+          <p>message-header</p>
+        </div>
+        <div class="message-body">
+          message-body
+        </div>
+      </article>
+      <article class="message is-warning">
+        <div class="message-header">
+          <p>message-header</p>
+        </div>
+        <div class="message-body">
+          message-body
+        </div>
+      </article>
+      <article class="message is-danger">
+        <div class="message-header">
+          <p>message-header</p>
+        </div>
+        <div class="message-body">
+          message-body
+        </div>
+      </article>
+    </div>
+
+    <!-- SIDE MENU -->
+    <h1 class="title is-1"></h1>
+    <div data-toc="SIDE MENU" class="block">
+      <aside class="menu">
+        <p class="menu-label">menu-label 1</p>
+        <ul class="menu-list">
+          <li><a>Link1</a></li>
+          <li><a>Link2</a></li>
+        </ul>
+
+        <p class="menu-label">menu-label 2</p>
+        <ul class="menu-list">
+          <li>
+            <a class="is-active" href="">Link</a>
+            <ul>
+              <li><a href="">Link</a></li>
+              <li><a href="">Link</a></li>
+              <li><a href="">Link</a></li>
+            </ul>
+          </li>
+          <li><a>Link3</a></li>
+          <li><a>Link4</a></li>
+        </ul>
+      </aside>
+    </div>
+
+    <!--  -->
+    <h1 class="title is-1"></h1>
+    <div class="block">
+
+    </div>
+
+    <!-- margin bottom -->
+    <div style="margin-top:500px"></div>
+  </div>
+</body>
