@@ -29,12 +29,12 @@
       padding: 20px;
       border-left: 1px solid #ddd;
       position: sticky;
-      top: 20px;  /* 保持在視窗中 */
+      top: 20px;
       transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
     }
-    .right-aside.hidden {
+    /* 可選，如果沒用，只是效果不明顯而已 */
+    .right-aside.is-invisible {
       transform: translateX(100%);
-      visibility: hidden;
     }
   </style>
 </head>
@@ -108,10 +108,21 @@
         </div>
 
         <div class="navbar-end">
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Toggle</a>
+            <div class="navbar-dropdown">
+              <label class="navbar-item title is-6">navbar</label>
+              <a class="navbar-item" id="btn-nav-fixed-top">fixed-top</a>
+              <a class="navbar-item" id="btn-nav-fixed-bottom" >fixed-bottom</a>
+              <hr class="navbar-divider">
+              <label class="navbar-item title is-6">aside</label>
+              <a class="navbar-item" id="toggle-left-aside_display">left-aside: display</a>
+              <a class="navbar-item" id="toggle-toc_display">TOC:display</a>
+              <a class="navbar-item" id="toggle-toc_visibility">TOC:visibility</a>
+            </div>
+          </div>
           <div class="navbar-item">
             <div class="buttons">
-              <a id="btn-nav-fixed-top" class="button">fixed-top toggle</a>
-              <a id="btn-nav-fixed-bottom" class="button">fixed-bottom toggle</a>
               <a class="button is-primary"><strong>Sign up</strong></a>
               <a class="button is-light">Log in</a>
             </div>
@@ -122,7 +133,7 @@
   </div>
 
   <section class="content-wrapper">
-    <aside class="menu left-aside">
+    <aside id="left-aside" class="menu left-aside">
       <p class="menu-label">menu-label 1</p>
       <ul class="menu-list">
         <li><a>Link1</a></li>
@@ -367,7 +378,7 @@
       <div style="margin-top:500px"></div>
     </main>
 
-    <aside class="right-aside">
+    <aside id="right-aside" class="right-aside">
       <h3 class="title is-4">Table of Contents</h3>
       <ul id="outline">
         <li><a>Overview</a></li>
@@ -392,6 +403,7 @@
       })
     })
 
+    // fixed-top, fixed-bottom
     const navElem = document.querySelector("nav")
     document.querySelector(`#btn-nav-fixed-top`).onclick = e =>{
       navElem.classList.remove(`is-fixed-bottom`)
@@ -403,6 +415,47 @@
       navElem.classList.toggle(`is-fixed-bottom`)
       document.querySelector("html").classList.toggle(`has-navbar-fixed-bottom`)
     }
+
+    // toggle-toc
+    const tocWidth = 30 // %
+    const defaultMainWidth = 50 // %
+    const leftAsideWidth = 20 // %
+    ;[
+      ['toggle-toc_display', 'is-display-none'],
+      ['toggle-toc_visibility', 'is-invisible']
+    ].forEach(([elemID, attr])=>{
+      document.getElementById(elemID).addEventListener('click', e => {
+        e.preventDefault()
+        const rightAside = document.getElementById('right-aside')
+        const mainContent = document.querySelector('main')
+        rightAside.classList.toggle(attr)
+
+        // Adjust the main content width based on right sidebar visibility
+        const curWidth = mainContent.style.width.length > 0 ? parseFloat(mainContent.style.width): defaultMainWidth
+
+        if (rightAside.classList.contains(attr)) {
+          mainContent.style.width = `${curWidth + tocWidth}%`  // Expand to occupy more space when sidebar is hidden
+        } else {
+          mainContent.style.width = `${curWidth - tocWidth}%`  // Revert back when sidebar is visible
+        }
+      })
+    })
+
+
+    // toggle left
+    document.getElementById('toggle-left-aside_display').addEventListener('click', e => {
+      e.preventDefault()
+      const leftAside = document.getElementById('left-aside')
+      const mainContent = document.querySelector('main')
+      leftAside.classList.toggle('is-display-none')
+
+      const curWidth = mainContent.style.width.length > 0 ? parseFloat(mainContent.style.width): defaultMainWidth
+      if (leftAside.classList.contains('is-display-none')) {
+        mainContent.style.width = `${curWidth + leftAsideWidth}%`
+      } else {
+        mainContent.style.width = `${curWidth - leftAsideWidth}%`
+      }
+    })
   }
 
   document.addEventListener('DOMContentLoaded', () => {
