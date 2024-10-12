@@ -3,4 +3,5 @@
 *.png
 
 # my-bulma.css: from `static/sass/compile_sass.bat`
-src/my-bulma.css
+# 還是包出去，讓Github page可以正常顯示
+# playground/my-bulma.css
